@@ -1,0 +1,29 @@
+Find all products:
+db.products.find()
+
+Find the first product:
+db.products.findOne()
+
+Find products with a price greater than 20:
+db.products.find({ price: { $gt: 20 } })
+
+Find products in the "Electronics" category or with the "tech" tag:
+db.products.find({ $or: [{ category: "Electronics" }, { tags: "tech" }] })
+
+Find products that are not in stock:
+db.products.find({ in_stock: { $ne: true } })
+
+Find products with a null value for the "reviews" field:
+db.products.find({ reviews: null })
+
+Find products with a name starting with "Product":
+db.products.find({ name: /^Product/ })
+
+Find products with a "rating" of 4.5 in their reviews:
+db.products.find({ "reviews.rating": 4.5 })
+
+Find the first 5 products, sorted by price in descending order:
+db.products.find().sort({ price: -1 }).limit(5)
+
+Find products with a price between 20 and 30, skipping the first 2 results:
+db.products.find({ price: { $gt: 20, $lt: 30 } }).skip(2)
