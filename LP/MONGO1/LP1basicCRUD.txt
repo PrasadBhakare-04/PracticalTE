@@ -1,0 +1,36 @@
+db.products.insertOne({
+    "_id": ObjectId("647858a91234567890123"),
+    "name": "Product A",
+    "price": 29.99,
+    "category": "Electronics",
+    "tags": ["tech", "gadget"],
+    "in_stock": true
+})
+
+batch insert
+db.products.insertMany([
+    {
+        "name": "Product B",
+        "price": 19.99,
+        "category": "Books"
+    },
+    {
+        "name": "Product C",
+        "price": 39.99,
+        "category": "Clothing"
+    }
+])
+
+db.products.deleteOne({ name: "Product A" })
+db.products.deleteMany({ category: "Electronics" })
+
+update document
+db.products.replaceOne({ name: "Product B" }, { name: "Updated Product B", price: 25.99 })
+using modifiers
+db.products.updateOne({ name: "Product C" }, { $set: { price: 35.99 } })
+db.products.updateOne({ name: "Product C" }, { $inc: { price: 5 } })
+db.products.updateOne({ name: "Product C" }, { $unset: { category: "" } })
+db.products.updateOne({ name: "Product C" }, { $push: { tags: "sale" } })
+db.products.updateOne({ name: "Product C" }, { $pull: { tags: "sale" } })
+db.products.updateOne({ name: "Product D" }, { $set: { price: 10.99 } }, { upsert: true })
+db.products.updateMany({ category: "Books" }, { $set: { in_stock: false } })
