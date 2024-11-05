@@ -1,3 +1,6 @@
+Create collection
+db.collectionName.insertOne({"name":"Shampoo","price":29.99,"category":"hair", "tags":["hair","wash"],"in_stock":true,"reviews":[{"rating":4.5,"comment":"Great Product"},{"rating":3.8, "comment":"could be better"}]})
+
 Find all products:
 db.products.find()
 
